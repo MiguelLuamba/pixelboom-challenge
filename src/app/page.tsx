@@ -3,6 +3,7 @@ import { CircleButton } from "@/components/circle-button";
 import { StatsContainer } from "@/components/stats-container";
 import { UserListContainer } from "@/components/user-list-container";
 import { FormAddAndEditUser } from "@/components/form-add-and-edit-user";
+import { OpenSheetButton } from "./_components/open-sheet-button";
 
 export default function Home() {
 
@@ -10,10 +11,7 @@ export default function Home() {
     <main className="w-full h-max p-10 flex flex-col gap-5 overflow-y-auto">
       <article className="flex items-center justify-between pb-6">
         <h1 className="font-noto-serif text-3xl">Usuários</h1>
-        <label htmlFor="open-form" className="flex cursor-pointer items-center gap-2 bg-primary border-none outline-none px-4 py-3 rounded-full text-white">
-          <Plus size={16} color="#FFF" className="shrink-0"/>
-          <span className="text-sm">Adicionar</span>
-        </label>
+        <OpenSheetButton/>
       </article>
 
       {/* STATISTICS CARD CONTAINER */}

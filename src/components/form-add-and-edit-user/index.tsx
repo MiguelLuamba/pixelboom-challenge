@@ -1,3 +1,4 @@
+"use client";
 import { Form } from "./form";
 import {
   Sheet,
@@ -8,11 +9,14 @@ import {
 } from "@/components/ui/sheet";
 import { X } from "lucide-react";
 import { CircleButton } from "@/components/circle-button";
+import { useUserStore } from "@/lib/app-store";
 
 export function FormAddAndEditUser() {
+  const { isModalUserOpen, closeForm } = useUserStore();
+
   return (
-    <Sheet>
-      <SheetTrigger id="open-form" className="hidden">Open</SheetTrigger>
+    <Sheet open={isModalUserOpen} onOpenChange={(open) => !open && closeForm()}>
+      {/* <SheetTrigger id="open-form" className="hidden">Open</SheetTrigger> */}
       <SheetContent className="w-[560px] max-w-full sm:max-w-[560px] md:max-w-[560px] [&>button.absolute.top-4.right-4]:hidden overflow-y-auto flex flex-col justify-between p-10">
         <div>
           <SheetHeader className="flex p-0 flex-row items-center justify-between">
@@ -21,7 +25,7 @@ export function FormAddAndEditUser() {
             </SheetTitle>
 
             <SheetClose asChild id="close-sheet-form">
-              <CircleButton>
+              <CircleButton onPress={closeForm}>
                 <X size={16} className="text-foreground"/>
               </CircleButton>
             </SheetClose>

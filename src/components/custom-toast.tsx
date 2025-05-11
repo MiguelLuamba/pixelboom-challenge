@@ -13,5 +13,5 @@ export function customToast(message: string = "Usuário adicionado com sucesso!"
         Fechar
       </Button>
     </div>
-  ), { duration:5000 })
+  ), { duration:5000, position:"bottom-right" })
 }

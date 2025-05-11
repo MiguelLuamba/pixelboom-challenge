@@ -18,10 +18,16 @@ export type User = {
 interface UserStore {
   users: User[];
   isHydrated: boolean;
+  isModalUserOpen: boolean;
+  userToEdit: User | null;
+
   addUser: (user: Omit<User, "id">) => void;
   removeUser: (id: string) => void;
   clearUsers: () => void;
   setIsHydrated: (value: boolean) => void;
+
+  openForm: (user?: User) => void;
+  closeForm: () => void;
 }
 
 export const useUserStore = create<UserStore>()(
@@ -29,16 +35,34 @@ export const useUserStore = create<UserStore>()(
     (set, get) => ({
       users: [],
       isHydrated: false,
+      isModalUserOpen: false,
+      userToEdit: null,
+
       addUser: (userData) =>
         set((state) => ({
           users: [...state.users, { id: generateId(), ...userData }],
         })),
+
       removeUser: (id) =>
         set((state) => ({
           users: state.users.filter((user) => user.id !== id),
         })),
+
       clearUsers: () => set({ users: [] }),
+
       setIsHydrated: (value) => set({ isHydrated: value }),
+
+      openForm: (user) =>
+        set({
+          isModalUserOpen: true,
+          userToEdit: user,
+        }),
+
+      closeForm: () =>
+        set({
+          isModalUserOpen: false,
+          userToEdit: null,
+        }),
     }),
     {
       name: "pixelboom-users-store",

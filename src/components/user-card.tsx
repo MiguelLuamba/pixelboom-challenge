@@ -1,21 +1,20 @@
+import { useUserStore } from "@/lib/app-store"
 import { getInitials } from "@/utils/get-initial";
 import type { User as UserType} from "@/lib/app-store"
 import { Calendar, Clock, EllipsisVertical, Tag, User } from "lucide-react";
 
-export function UserCard({
-  nome,
-  ativo
-}: UserType) {
+export function UserCard(data: UserType) {
+  const { openForm } = useUserStore();
   return (
     <div className="grow h-20 rounded-[8px] border border-border flex items-center font-inter gap-3 p-3">
 
       <div className="size-14 rounded-full bg-accent uppercase grid place-items-center text-base font-medium shrink-0">
-        {getInitials(nome)}
+        {getInitials(data.nome)}
       </div>
       
       <article className="flex flex-1 flex-col gap-2">
         <div className="flex items-center gap-3">
-          <p className="text-foreground text-sm">{nome}</p>
+          <p className="text-foreground text-sm">{data.nome}</p>
           <div className="flex items-center gap-1">
             <User size={12} className="text-sidebar-ring"/>
             <span className="text-muted-foreground text-xs">51 anos, Homem</span>
@@ -42,15 +41,15 @@ export function UserCard({
 
 
       <div className="flex items-center gap-3">
-        {ativo 
+        {data.ativo 
           ?(<p className="px-2.5 py-0.5 rounded-full font-semibold font-inter text-xs bg-secondary text-foreground">Ativo</p>)
           :(<p className="px-2.5 py-0.5 border rounded-full border-border text-muted-foreground font-semibold font-inter text-xs">Inativo</p>)
         }
-        
-
-        <EllipsisVertical size={16} className="text-foreground"/>
+        <EllipsisVertical size={16} className="text-foreground cursor-pointer" onClick={()=>{
+          openForm(data)
+          console.log(data)
+        }}/>
       </div>
-
 
     </div>
   )
