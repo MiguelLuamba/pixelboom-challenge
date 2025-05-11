@@ -32,7 +32,7 @@ interface UserStore {
 
 export const useUserStore = create<UserStore>()(
   persist(
-    (set, get) => ({
+    (set) => ({
       users: [],
       isHydrated: false,
       isModalUserOpen: false,

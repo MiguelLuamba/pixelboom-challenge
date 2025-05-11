@@ -52,7 +52,7 @@ export function Form() {
         <label htmlFor="close-sheet-form">
           <Button type="button" variant="SECUNDARY" text="cancelar" onPress={closeForm}/>
         </label>
-        <Button type="submit" variant="PRIMARY" text="adicionar"/>
+        <Button type="submit" variant="PRIMARY" text={userToEdit?.id?"Editar":"Adicionar"}/>
       </div>
     </form>
   )

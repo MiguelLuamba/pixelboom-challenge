@@ -4,8 +4,7 @@ import {
   Sheet,
   SheetClose,
   SheetContent, SheetHeader,
-  SheetTitle,
-  SheetTrigger
+  SheetTitle
 } from "@/components/ui/sheet";
 import { X } from "lucide-react";
 import { CircleButton } from "@/components/circle-button";
