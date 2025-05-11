@@ -1,9 +1,9 @@
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 
-export function customToast(message: string = "Usuário adicionado com sucesso!") {
+export function customToast(message: string) {
   toast.custom((t) => (
-    <div className="bg-white border border-border rounded-[8px] shadow-md py-6 px-8 flex items-center justify-between gap-4 w-full max-w-[364px]">
+    <div className="bg-white border border-border rounded-[8px] shadow-md py-6 px-8 flex items-center justify-between gap-4 w-full max-w-[364px] z-50">
       <span className="text-sm text-foreground">{message}</span>
       <Button
         variant="ghost"

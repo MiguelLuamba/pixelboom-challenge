@@ -7,15 +7,14 @@ import {
   SheetTitle
 } from "@/components/ui/sheet";
 import { X } from "lucide-react";
-import { CircleButton } from "@/components/circle-button";
 import { useUserStore } from "@/lib/app-store";
+import { CircleButton } from "@/components/circle-button";
 
 export function FormAddAndEditUser() {
   const { isModalUserOpen, closeForm } = useUserStore();
 
   return (
     <Sheet open={isModalUserOpen} onOpenChange={(open) => !open && closeForm()}>
-      {/* <SheetTrigger id="open-form" className="hidden">Open</SheetTrigger> */}
       <SheetContent className="w-[560px] max-w-full sm:max-w-[560px] md:max-w-[560px] [&>button.absolute.top-4.right-4]:hidden overflow-y-auto flex flex-col justify-between p-10">
         <div>
           <SheetHeader className="flex p-0 flex-row items-center justify-between">
@@ -33,9 +32,6 @@ export function FormAddAndEditUser() {
           
           <Form />
         </div>
-
-
-
       </SheetContent>
     </Sheet>
   )

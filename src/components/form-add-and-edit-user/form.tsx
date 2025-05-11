@@ -1,17 +1,64 @@
-import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { Input } from "../input";
 import { Button } from "../button";
+import { FormEvent, useState } from "react";
+import { customToast } from "../custom-toast";
 import { useUserStore } from "@/lib/app-store";
 import { Switch } from "@/components/ui/switch";
-import { handleAddUser } from "@/utils/add-new-user";
 
 export function Form() {
-  const { userToEdit, closeForm } = useUserStore();
+  const { closeForm } = useUserStore();
+  const {addUser, updateUser, userToEdit} = useUserStore()
   const [ativo, setAtivo] = useState(userToEdit?.ativo ?? false);
+  
+  function handleAddAndEditUser(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
 
+
+    const formData = new FormData(e.currentTarget);
+
+    const nome = formData.get("nome")?.toString().trim() || "";
+    const email = formData.get("email")?.toString().trim() || "";
+    const isWhatsapp = document.querySelector<HTMLInputElement>("#whatsapp")?.dataset.state === "checked";
+
+    const telefone = formData.get("telefone")?.toString().trim() || "";
+    const cpf = formData.get("cpf")?.toString().trim() || "";
+    const rg = formData.get("rg")?.toString().trim() || "";
+
+
+    // PEGAR O ESTADO DO SWITH VIA DOM
+    const ativo = document.querySelector<HTMLInputElement>("#user-state")?.dataset.state === "checked";
+
+    if (!email || !nome || !telefone || !cpf || !rg) {
+      customToast("Preencha todos os campos obrigatórios.");
+      return;
+    }
+
+    if (userToEdit) {
+      updateUser({
+        ...userToEdit,
+        nome, email,
+        telefone, cpf,
+        rg, ativo,
+        isWhatsapp,
+      });
+      customToast("Dados do usuário atualizado com sucesso!")
+
+    } else {
+      addUser({
+        nome, email,
+        telefone, cpf,
+        rg, ativo,
+        isWhatsapp,
+      });
+      customToast("Usuário adicionado com sucesso!")
+    }
+
+    e.currentTarget.reset();
+
+  }
   return (
-    <form onSubmit={handleAddUser} action="" method="post" className="space-y-5">
+    <form onSubmit={handleAddAndEditUser} action="" method="post" className="space-y-5">
       <Input type="text" labelText="Nome Completo" name="nome" placeholder="Digite o nome" value={userToEdit?.nome ?? ""} />
       <Input type="email" labelText="E-mail" name="email" placeholder="Digite o e-mail" value={userToEdit?.email ?? ""}/>
       <Input type="tel" labelText="Telefone" name="telefone" placeholder="Digite o telefone" value={userToEdit?.telefone ?? ""} checkValue={userToEdit?.isWhatsapp ?? false}/>
@@ -45,7 +92,7 @@ export function Form() {
         </div>
       </div>
 
-      {/* Campo escondido para enviar o valor do switch no form */}
+      {/* INPUT PARA ENVIAR O VALOR NO SHWITH DO FORM */}
       <input type="hidden" name="ativo" value={ativo ? "true" : "false"} />
 
       <div className="flex items-center justify-end gap-2 mt-10">

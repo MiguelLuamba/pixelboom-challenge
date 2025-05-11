@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 
-// Gerador simples de ID
+// GERAR ID
 const generateId = () => crypto.randomUUID();
 
 export type User = {
@@ -23,6 +23,7 @@ interface UserStore {
 
   addUser: (user: Omit<User, "id">) => void;
   removeUser: (id: string) => void;
+  updateUser: (updatedUser: User) => void;
   clearUsers: () => void;
   setIsHydrated: (value: boolean) => void;
 
@@ -43,6 +44,15 @@ export const useUserStore = create<UserStore>()(
           users: [...state.users, { id: generateId(), ...userData }],
         })),
 
+      updateUser: (updatedUser) =>
+        set((state) => ({
+          users: state.users.map((user) =>
+            user.id === updatedUser.id ? updatedUser : user
+          ),
+          userToEdit: null,
+          isModalUserOpen: false,
+        })),
+        
       removeUser: (id) =>
         set((state) => ({
           users: state.users.filter((user) => user.id !== id),
