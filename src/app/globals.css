@@ -22,9 +22,12 @@
   --color-chart-2: var(--chart-2);
   --color-chart-1: var(--chart-1);
   --color-ring: var(--ring);
+  --color-navbar:var(--navbar);
+  --color-muted-foreground-2:var(--muted-foreground-2);
   --color-input: var(--input);
   --color-border: var(--border);
   --color-destructive: var(--destructive);
+  
   --color-accent-foreground: var(--accent-foreground);
   --color-accent: var(--accent);
   --color-muted-foreground: var(--muted-foreground);
@@ -32,6 +35,7 @@
   --color-secondary-foreground: var(--secondary-foreground);
   --color-secondary: var(--secondary);
   --color-primary-foreground: var(--primary-foreground);
+  --color-dark: var(--dark);
   --color-primary: var(--primary);
   --color-popover-foreground: var(--popover-foreground);
   --color-popover: var(--popover);
@@ -51,6 +55,9 @@
   --primary-foreground: #FAFAFA;
   --sidebar-ring:#A1A1AA;
   --background: #FFFFFF;
+  --navbar:#FBFBFB;
+  --border: #E4E4E7;
+  --muted-foreground-2:#463F3F;
   --foreground: #18181B;
   --font-inter: var(--font-inter);
   --font-noto-serif: var(--font-noto-serif);
@@ -60,8 +67,9 @@
   --success: #DCFCE7;
   --success-foreground: #15803D;
 
-  --border: #E5E5E5;
-  --input: #E5E5E5;
+  --input: #E4E4E7;
+
+  --dark:#000000;
 
   --ll:#3F3F46;
 
@@ -72,6 +80,7 @@
 
   --destructive: #B91C1C; /* opcional, se quiser para erros */
 }
+
 
 @layer base {
   * {
