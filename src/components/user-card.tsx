@@ -1,8 +1,6 @@
-import { Calendar, Clock, EllipsisVertical, Tag, User } from "lucide-react";
-
-import type { User as UserType} from "@/lib/app-store"
 import { getInitials } from "@/utils/get-initial";
-
+import type { User as UserType} from "@/lib/app-store"
+import { Calendar, Clock, EllipsisVertical, Tag, User } from "lucide-react";
 
 export function UserCard({
   nome,

@@ -1,16 +1,16 @@
 import { Checkbox } from "@/components/ui/checkbox"
 
 interface InputProps {
-  labelText: string
-  type: React.HTMLInputTypeAttribute;
   name: string
+  labelText: string
   placeholder: string
+  type: React.HTMLInputTypeAttribute;
 }
+
 export function Input({
   labelText,
-  name,
+  type, name,
   placeholder,
-  type
 }:InputProps) {
   return (
     <div className="flex flex-col items-start grow gap-2">

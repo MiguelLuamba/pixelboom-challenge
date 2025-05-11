@@ -3,10 +3,9 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import { Toaster } from "@/components/ui/sonner"
 import { Noto_Serif, Inter } from "next/font/google";
+import { CircleButton } from "@/components/circle-button";
 import { NavbarListItems } from "@/components/navbar-list-items";
 import { Activity, Bell, ChevronsUpDown, CircleHelp, FileCheck, Headset, PanelLeft, Settings, User } from "lucide-react";
-import { CircleButton } from "@/components/circle-button";
-
 
 const inter = Inter({
   subsets: ["latin"],
@@ -129,10 +128,7 @@ export default function RootLayout({
           {/* OTHER ROUTES */}
           <main className="size-full h-[calc(100vh-72px)] overflow-y-auto">
             {children}
-
-            <div className="bg-white">
-              <Toaster />
-            </div>
+            <Toaster />
           </main>
         </aside>
 

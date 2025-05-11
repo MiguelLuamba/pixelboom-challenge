@@ -1,14 +1,11 @@
-import { ButtonHTMLAttributes } from "react"
-
 interface ButtonProps {
-  variant: "PRIMARY" | "SECUNDARY"
-  type: "submit" | "button"
   text: string
+  type: "submit" | "button"
+  variant: "PRIMARY" | "SECUNDARY"
 }
 export function Button({
-  type,
-  text,
-  variant
+  variant,
+  type, text,
 }: ButtonProps) {
   return (
     <button type={type} 

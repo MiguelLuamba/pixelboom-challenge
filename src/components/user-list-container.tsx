@@ -1,7 +1,11 @@
-"use client"
-import { useState, useMemo } from "react"
-import { UserCard } from "./user-card"
-import { useUserStore } from "@/lib/app-store"
+"use client";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import {
   Pagination,
   PaginationContent,
@@ -10,15 +14,11 @@ import {
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
-} from "@/components/ui/pagination"
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select"
-import { LoadingComponent } from "./loading-components"
+} from "@/components/ui/pagination";
+import { UserCard } from "./user-card";
+import { useState, useMemo } from "react";
+import { useUserStore } from "@/lib/app-store";
+import { LoadingComponent } from "./loading-components";
 
 export function UserListContainer() {
   const { isHydrated, users } = useUserStore()

@@ -1,6 +1,5 @@
 import React, { ReactNode } from "react";
 
-
 type NavbarItem = {
   title: string
   icon: ReactNode
