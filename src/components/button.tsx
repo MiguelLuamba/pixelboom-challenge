@@ -1,7 +1,7 @@
 interface ButtonProps {
   text: string
-  type: "submit" | "button"
   onPress?: ()=> void
+  type: "submit" | "button"
   variant: "PRIMARY" | "SECUNDARY"
 }
 export function Button({

@@ -16,7 +16,7 @@ export function FormAddAndEditUser() {
   return (
     <Sheet open={isModalUserOpen} onOpenChange={(open) => !open && closeForm()}>
       <SheetContent className="w-[560px] max-w-full sm:max-w-[560px] md:max-w-[560px] [&>button.absolute.top-4.right-4]:hidden overflow-y-auto flex flex-col justify-between p-10">
-        <div>
+        <div className="space-y-10">
           <SheetHeader className="flex p-0 flex-row items-center justify-between">
             <SheetTitle className="font-noto-serif text-foreground text-2xl font-normal">
               Adicionar usuário

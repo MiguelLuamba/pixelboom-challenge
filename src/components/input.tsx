@@ -6,6 +6,7 @@ interface InputProps {
   placeholder: string
   value?: string
   checkValue?: boolean
+  onCheckChange?: (value: boolean) => void
   type: React.HTMLInputTypeAttribute;
 }
 
@@ -14,6 +15,7 @@ export function Input({
   type, name,
   checkValue,
   placeholder, value,
+  onCheckChange,
 }: InputProps) {
   return (
     <div className="flex flex-col items-start grow gap-2">
@@ -31,12 +33,12 @@ export function Input({
             name="isWhatsapp"
             id="whatsapp"
             checked={checkValue}
-            onCheckedChange={() => {}}
-            className="size-4"
+            onCheckedChange={onCheckChange}
+            className="size-4 cursor-pointer"
           />
-          <label htmlFor="whatsapp" className="text-sm font-medium font-inter">Whatsapp</label>
+          <label htmlFor="whatsapp" className="text-sm font-medium font-inter cursor-pointer">Whatsapp</label>
         </div>
       )}
     </div>
-  )
+  );
 }

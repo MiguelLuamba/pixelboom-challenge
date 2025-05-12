@@ -38,7 +38,7 @@ export default function RootLayout({
         <section className="w-60 shrink-0 h-screen relative bg-navbar border-r border-border">
           <div className="flex px-4 items-center w-full h-[72px] border-b border-border">
             <button className="border-none outline-none bg-dark w-24 h-8 rounded-[8px]">
-              <p className="text-white text-xs uppercase">LOGO</p>
+              <p className="text-white text-xs font-bold uppercase">LOGO</p>
             </button>
           </div>
 

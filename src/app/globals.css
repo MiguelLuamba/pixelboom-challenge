@@ -71,13 +71,9 @@
 
   --dark:#000000;
 
-  /* --ll:#3F3F46; */
-
   --muted: #F5F5F5;
 
   --accent-foreground: #0F5132;
-
-  --destructive: #B91C1C; /* opcional, se quiser para erros */
 }
 
 

@@ -15,10 +15,10 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
-import { UserCard } from "./user-card";
+import { UserCard } from "../../components/user-card";
 import { useState, useMemo } from "react";
 import { useUserStore } from "@/lib/app-store";
-import { LoadingComponent } from "./loading-components";
+import { LoadingComponent } from "../../components/loading-components";
 
 export function UserListContainer() {
   const { isHydrated, users } = useUserStore()

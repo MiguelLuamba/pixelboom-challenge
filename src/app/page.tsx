@@ -1,9 +1,9 @@
 import { ListFilter, Search } from "lucide-react";
 import { CircleButton } from "@/components/circle-button";
-import { StatsContainer } from "@/components/stats-container";
 import { OpenSheetButton } from "./_components/open-sheet-button";
-import { UserListContainer } from "@/components/user-list-container";
+import { StatsContainer } from "@/app/_components/stats-container";
 import { FormAddAndEditUser } from "@/components/form-add-and-edit-user";
+import { UserListContainer } from "@/app/_components/user-list-container";
 
 export default function Home() {
 

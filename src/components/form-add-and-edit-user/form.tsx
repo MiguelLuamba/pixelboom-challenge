@@ -1,15 +1,21 @@
 import { cn } from "@/lib/utils";
 import { Input } from "../input";
 import { Button } from "../button";
-import { FormEvent, useState } from "react";
 import { customToast } from "../custom-toast";
 import { useUserStore } from "@/lib/app-store";
 import { Switch } from "@/components/ui/switch";
+import { FormEvent, useEffect, useState } from "react";
 
 export function Form() {
-  const { closeForm } = useUserStore();
-  const {addUser, updateUser, userToEdit} = useUserStore()
+
+  const { closeForm, addUser, updateUser, userToEdit } = useUserStore();
+  const [isWhatsapp, setIsWhatsapp] = useState(userToEdit?.isWhatsapp ?? false);
   const [ativo, setAtivo] = useState(userToEdit?.ativo ?? false);
+
+  useEffect(() => {
+    setAtivo(userToEdit?.ativo ?? false);
+    setIsWhatsapp(userToEdit?.isWhatsapp ?? false);
+  }, [userToEdit]);
   
   function handleAddAndEditUser(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -61,7 +67,15 @@ export function Form() {
     <form onSubmit={handleAddAndEditUser} action="" method="post" className="space-y-5">
       <Input type="text" labelText="Nome Completo" name="nome" placeholder="Digite o nome" value={userToEdit?.nome ?? ""} />
       <Input type="email" labelText="E-mail" name="email" placeholder="Digite o e-mail" value={userToEdit?.email ?? ""}/>
-      <Input type="tel" labelText="Telefone" name="telefone" placeholder="Digite o telefone" value={userToEdit?.telefone ?? ""} checkValue={userToEdit?.isWhatsapp ?? false}/>
+      <Input
+        type="tel"
+        name="telefone"
+        labelText="Telefone"
+        checkValue={isWhatsapp}
+        onCheckChange={setIsWhatsapp}
+        placeholder="Digite o telefone"
+        value={userToEdit?.telefone ?? ""}
+      />
       
       <div className="flex items-start gap-4">
         <Input type="text" labelText="CPF" name="cpf" placeholder="Informe o CPF" value={userToEdit?.cpf ?? ""}/>
